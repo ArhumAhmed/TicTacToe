@@ -9,7 +9,8 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    boolean turn; //Flag that tracks whose turn it is.
+    //boolean turn; //Flag that tracks whose turn it is.
+    boolean isPlayerX=true; //Boolean to track if player turn
     char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
     //Buttons representing the sector
     Button button0;
@@ -68,10 +69,22 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x0.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                //x0.bringToFront();
-                //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
-                arr[0] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x0.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                    //x0.bringToFront();
+                    //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
+                    arr[0] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o0.setVisibility(View.VISIBLE);
+                    arr[0] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
             }
 
             else
@@ -84,8 +97,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[1]!='X' && arr[1]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[1] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                    arr[1] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o1.setVisibility(View.VISIBLE);
+                    arr[1] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -98,8 +122,20 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[2]!='X' && arr[2]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[2] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                    arr[2] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o2.setVisibility(View.VISIBLE);
+                    arr[2] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
             }
 
             else
@@ -112,8 +148,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[3]!='X' && arr[3]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x3.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[3] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x3.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                    arr[3] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o3.setVisibility(View.VISIBLE);
+                    arr[3] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -126,8 +173,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[4]!='X' && arr[4]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x4.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[4] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x4.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                    arr[4] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o4.setVisibility(View.VISIBLE);
+                    arr[4] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -140,8 +198,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[5]!='X' && arr[5]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x5.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[5] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x5.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                    arr[5] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o5.setVisibility(View.VISIBLE);
+                    arr[5] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -154,8 +223,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[6]!='X' && arr[6]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x6.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[6] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                    arr[6] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o6.setVisibility(View.VISIBLE);
+                    arr[6] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -168,8 +248,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[7]!='X' && arr[7]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x7.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[7] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x7.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                    arr[7] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o7.setVisibility(View.VISIBLE);
+                    arr[7] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -182,8 +273,19 @@ public class MainActivity extends AppCompatActivity {
         {
             if(arr[8]!='X' && arr[8]!= 'O') //Check to see if space occupied. 1 check if null?
             {
-                x8.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                arr[8] = 'X'; //Store the piece in the array
+                if(isPlayerX) //If player is X
+                {
+                    x8.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                    arr[8] = 'X'; //Store the piece in the array
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+
+                else //Otherwise, player is O
+                {
+                    o8.setVisibility(View.VISIBLE);
+                    arr[8] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
             }
 
             else
@@ -191,6 +293,38 @@ public class MainActivity extends AppCompatActivity {
                 Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
             }
         }
-        
+
+        isGameOver();
     }
+
+    boolean isGameOver()
+    {
+        if(arr[0]==arr[1] && arr[1]==arr[2]) //First row all the same
+        {
+            return true;
+        }
+
+        else if (arr[3]==arr[4] && arr[4]==arr[5]) //Second row all the same
+        {
+            return true;
+        }
+
+        else if (arr[6]==arr[7] && arr[7]==arr[8]) //Third row all the same
+        {
+            return true;
+        }
+
+        else if (arr[0]==arr[3] && arr[3]==arr[6]) //First column all the same
+        {
+            return true;
+        }
+
+        else if (arr[1]==arr[4] && arr[4]==arr[7]) //
+        {
+            return true;
+        }
+
+        return false;
+    }
+
 }
