@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
     //boolean turn; //Flag that tracks whose turn it is.
     boolean isPlayerX=true; //Boolean to track if player turn
     boolean gameOver=false;
+    boolean onePlayerMode = false;
     char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
     //Buttons representing the sector
     Button button0;
@@ -46,15 +47,84 @@ public class MainActivity extends AppCompatActivity {
 
     public void onePlayer(View v)
     {
+
         setContentView(R.layout.activity_main);
+
+
     }
 
     public void twoPlayer(View v)
     {
+
         setContentView(R.layout.activity_main);
     }
     public void userMove(View v)
     {
+
+        if(onePlayerMode)
+        {
+
+            if(!isPlayerX)
+            {
+                AI ai = new AI();
+                int bestMove = ai.bestSpot;
+                {
+                    if(bestMove ==0)
+                    {
+                        userMove(button0);
+                    }
+                    else if(bestMove==1)
+                    {
+                        userMove(button1);
+                    }
+                    else if(bestMove==2)
+                    {
+                        userMove(button2);
+                    }
+                    else if(bestMove==3)
+                    {
+                        userMove(button3);
+                    }
+                    else if(bestMove==4)
+                    {
+                        userMove(button4);
+                    }
+                    else if(bestMove==5)
+                    {
+                        userMove(button5);
+                    }
+                    else if(bestMove==6)
+                    {
+                        userMove(button6);
+                    }
+                    else if(bestMove==7)
+                    {
+                        userMove(button7);
+                    }
+                    else if(bestMove==8)
+                    {
+                        userMove(button8);
+                    }
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
+                    }
+                }
+            }
+
+
+            else
+            {
+
+            }
+
+        }
+
+
+
+
+        
+
         if(!gameOver)
         {
 
