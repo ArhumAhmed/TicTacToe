@@ -15,7 +15,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/HorizontalDown" />
@@ -31,7 +31,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/HorizontalDown" />
@@ -47,7 +47,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button8"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/HorizontalDown" />
@@ -59,7 +59,7 @@
         android:layout_marginStart="256dp"
         android:layout_marginTop="2dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
     <TextView
@@ -72,7 +72,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
@@ -86,11 +86,11 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button5" />
 
-    <TextView
+    <Button
         android:id="@+id/button6"
         android:layout_width="100dp"
         android:layout_height="100dp"
@@ -98,7 +98,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintEnd_toStartOf="@+id/button7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
@@ -114,7 +114,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
@@ -130,7 +130,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button7"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button3" />
@@ -186,7 +186,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="2dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button0" />
 
@@ -200,7 +200,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button0" />
 
@@ -214,7 +214,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button0" />
 
@@ -225,7 +225,7 @@
         android:layout_marginStart="48dp"
         android:layout_marginTop="200dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -253,7 +253,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -264,7 +264,7 @@
         android:layout_marginStart="152dp"
         android:layout_marginTop="200dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -278,7 +278,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -292,7 +292,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -303,7 +303,7 @@
         android:layout_marginStart="256dp"
         android:layout_marginTop="200dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -317,7 +317,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -331,7 +331,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -343,7 +343,7 @@
         android:layout_marginTop="2dp"
         android:layout_marginEnd="8dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintEnd_toStartOf="@+id/button5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontalTop" />
@@ -359,7 +359,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontalTop" />
@@ -375,7 +375,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintEnd_toStartOf="@+id/button5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="@+id/horizontalTop" />
@@ -387,7 +387,7 @@
         android:layout_marginStart="256dp"
         android:layout_marginTop="2dp"
         android:onClick="userMove"
-        android:visibility="invisible"
+        android:alpha="0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -401,7 +401,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorAccent"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 
@@ -415,7 +415,7 @@
         android:textAlignment="center"
         android:textColor="@color/colorPrimaryDark"
         android:textSize="80sp"
-        android:visibility="invisible"
+        android:visibility="gone"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/button2" />
 

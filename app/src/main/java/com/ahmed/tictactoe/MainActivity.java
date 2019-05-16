@@ -53,11 +53,24 @@ public class MainActivity extends AppCompatActivity {
         TextView o7=findViewById(R.id.o7);
         TextView o8=findViewById(R.id.o8);
 
+        //Define buttons
+        button0 = findViewById(R.id.button0);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
+        button6 = findViewById(R.id.button6);
+        button7 = findViewById(R.id.button7);
+        button8 = findViewById(R.id.button8);
+
         if(findViewById(v.getId()) == button0) //If user clicked top left
         {
             if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
             {
                 x0.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                //x0.bringToFront();
+                //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
                 arr[0] = 'X'; //Store the piece in the array
             }
 
@@ -67,6 +80,117 @@ public class MainActivity extends AppCompatActivity {
             }
         }
 
+        else if(findViewById(v.getId()) == button1) //If user clicked top left
+        {
+            if(arr[1]!='X' && arr[1]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[1] = 'X'; //Store the piece in the array
+            }
 
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button2) //If user clicked top left
+        {
+            if(arr[2]!='X' && arr[2]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[2] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button3) //If user clicked top left
+        {
+            if(arr[3]!='X' && arr[3]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x3.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[3] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button4) //If user clicked top left
+        {
+            if(arr[4]!='X' && arr[4]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x4.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[4] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button5) //If user clicked top left
+        {
+            if(arr[5]!='X' && arr[5]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x5.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[5] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button6) //If user clicked top left
+        {
+            if(arr[6]!='X' && arr[6]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x6.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[6] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button7) //If user clicked top left
+        {
+            if(arr[7]!='X' && arr[7]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x7.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[7] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+
+        else if(findViewById(v.getId()) == button8) //If user clicked top left
+        {
+            if(arr[8]!='X' && arr[8]!= 'O') //Check to see if space occupied. 1 check if null?
+            {
+                x8.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                arr[8] = 'X'; //Store the piece in the array
+            }
+
+            else
+            {
+                Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+            }
+        }
+        
     }
 }
