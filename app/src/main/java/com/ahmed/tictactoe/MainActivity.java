@@ -32,11 +32,11 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
-        //RotateAnimation animation = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+        RotateAnimation animation = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
 
-        //animation.setDuration(2000);
-        //animation.setRepeatCount(Animation.INFINITE);
-        Animation animation = AnimationUtils.loadAnimation(this,R.anim.rotate);
+        animation.setDuration(1800);
+        animation.setRepeatCount(Animation.INFINITE);
+        //Animation animation = AnimationUtils.loadAnimation(this,R.anim.rotate);
         X = findViewById(R.id.X);
         X.setAnimation(animation);
         X.startAnimation(animation);
