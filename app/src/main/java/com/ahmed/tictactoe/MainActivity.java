@@ -2,6 +2,7 @@ package com.ahmed.tictactoe;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
@@ -43,369 +44,6 @@ public class MainActivity extends AppCompatActivity {
         X.startAnimation(animation);
 
 
-    }
-
-    public void onePlayer(View v)
-    {
-
-        setContentView(R.layout.activity_main);
-
-
-    }
-
-    public void twoPlayer(View v)
-    {
-
-        setContentView(R.layout.activity_main);
-    }
-    public void userMove(View v)
-    {
-
-        if(onePlayerMode)
-        {
-
-            if(!isPlayerX)
-            {
-                AI ai = new AI();
-                int bestMove = ai.bestSpot;
-                {
-                    if(bestMove ==0)
-                    {
-                        userMove(button0);
-                    }
-                    else if(bestMove==1)
-                    {
-                        userMove(button1);
-                    }
-                    else if(bestMove==2)
-                    {
-                        userMove(button2);
-                    }
-                    else if(bestMove==3)
-                    {
-                        userMove(button3);
-                    }
-                    else if(bestMove==4)
-                    {
-                        userMove(button4);
-                    }
-                    else if(bestMove==5)
-                    {
-                        userMove(button5);
-                    }
-                    else if(bestMove==6)
-                    {
-                        userMove(button6);
-                    }
-                    else if(bestMove==7)
-                    {
-                        userMove(button7);
-                    }
-                    else if(bestMove==8)
-                    {
-                        userMove(button8);
-                    }
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
-                    }
-                }
-            }
-
-
-            else
-            {
-
-            }
-
-        }
-
-
-
-
-        
-
-        if(!gameOver)
-        {
-
-
-            //X piece TextViews
-            TextView x0=findViewById(R.id.x0);
-            TextView x1=findViewById(R.id.x1);
-            TextView x2=findViewById(R.id.x2);
-            TextView x3=findViewById(R.id.x3);
-            TextView x4=findViewById(R.id.x4);
-            TextView x5=findViewById(R.id.x5);
-            TextView x6=findViewById(R.id.x6);
-            TextView x7=findViewById(R.id.x7);
-            TextView x8=findViewById(R.id.x8);
-
-            //O piece TextViews
-            TextView o0=findViewById(R.id.o0);
-            TextView o1=findViewById(R.id.o1);
-            TextView o2=findViewById(R.id.o2);
-            TextView o3=findViewById(R.id.o3);
-            TextView o4=findViewById(R.id.o4);
-            TextView o5=findViewById(R.id.o5);
-            TextView o6=findViewById(R.id.o6);
-            TextView o7=findViewById(R.id.o7);
-            TextView o8=findViewById(R.id.o8);
-
-            //Define buttons
-            button0 = findViewById(R.id.button0);
-            button1 = findViewById(R.id.button1);
-            button2 = findViewById(R.id.button2);
-            button3 = findViewById(R.id.button3);
-            button4 = findViewById(R.id.button4);
-            button5 = findViewById(R.id.button5);
-            button6 = findViewById(R.id.button6);
-            button7 = findViewById(R.id.button7);
-            button8 = findViewById(R.id.button8);
-
-            if(findViewById(v.getId()) == button0) //If user clicked top left
-            {
-                if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x0.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                        //x0.bringToFront();
-                        //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
-                        arr[0] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o0.setVisibility(View.VISIBLE);
-                        arr[0] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button1) //If user clicked top left
-            {
-                if(arr[1]!='X' && arr[1]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                        arr[1] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o1.setVisibility(View.VISIBLE);
-                        arr[1] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button2) //If user clicked top left
-            {
-                if(arr[2]!='X' && arr[2]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
-                        arr[2] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o2.setVisibility(View.VISIBLE);
-                        arr[2] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button3) //If user clicked top left
-            {
-                if(arr[3]!='X' && arr[3]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x3.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
-                        arr[3] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o3.setVisibility(View.VISIBLE);
-                        arr[3] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button4) //If user clicked top left
-            {
-                if(arr[4]!='X' && arr[4]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x4.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
-                        arr[4] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o4.setVisibility(View.VISIBLE);
-                        arr[4] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button5) //If user clicked top left
-            {
-                if(arr[5]!='X' && arr[5]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x5.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
-                        arr[5] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o5.setVisibility(View.VISIBLE);
-                        arr[5] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button6) //If user clicked top left
-            {
-                if(arr[6]!='X' && arr[6]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
-                        arr[6] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o6.setVisibility(View.VISIBLE);
-                        arr[6] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button7) //If user clicked top left
-            {
-                if(arr[7]!='X' && arr[7]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x7.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
-                        arr[7] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o7.setVisibility(View.VISIBLE);
-                        arr[7] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            else if(findViewById(v.getId()) == button8) //If user clicked top left
-            {
-                if(arr[8]!='X' && arr[8]!= 'O') //Check to see if space occupied. 1 check if null?
-                {
-                    if(isPlayerX) //If player is X
-                    {
-                        x8.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
-                        arr[8] = 'X'; //Store the piece in the array
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-
-                    else //Otherwise, player is O
-                    {
-                        o8.setVisibility(View.VISIBLE);
-                        arr[8] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                }
-
-                else
-                {
-                    Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                }
-            }
-
-            if(isGameOver())
-            {
-                String winner;
-                if(isPlayerX) // If it is currently player X turn
-                {
-                    winner = "O is the winner!";
-                }
-                else
-                {
-                    winner = "X is the winner!";
-                }
-                Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
-                gameOver=true;
-            }
-        }
     }
 
     boolean isGameOver()
@@ -451,5 +89,543 @@ public class MainActivity extends AppCompatActivity {
         }
         return false;
     }
+    public void onePlayer(View v)
+    {
+        onePlayerMode = true;
+        setContentView(R.layout.activity_main);
+    }
+
+    public void twoPlayer(View v)
+    {
+        setContentView(R.layout.activity_main);
+    }
+
+
+    public void userMove(View v)
+    {
+
+        //X piece TextViews
+        TextView x0=findViewById(R.id.x0);
+        TextView x1=findViewById(R.id.x1);
+        TextView x2=findViewById(R.id.x2);
+        TextView x3=findViewById(R.id.x3);
+        TextView x4=findViewById(R.id.x4);
+        TextView x5=findViewById(R.id.x5);
+        TextView x6=findViewById(R.id.x6);
+        TextView x7=findViewById(R.id.x7);
+        TextView x8=findViewById(R.id.x8);
+
+        //O piece TextViews
+        TextView o0=findViewById(R.id.o0);
+        TextView o1=findViewById(R.id.o1);
+        TextView o2=findViewById(R.id.o2);
+        TextView o3=findViewById(R.id.o3);
+        TextView o4=findViewById(R.id.o4);
+        TextView o5=findViewById(R.id.o5);
+        TextView o6=findViewById(R.id.o6);
+        TextView o7=findViewById(R.id.o7);
+        TextView o8=findViewById(R.id.o8);
+
+        //Define buttons
+        button0 = findViewById(R.id.button0);
+        button1 = findViewById(R.id.button1);
+        button2 = findViewById(R.id.button2);
+        button3 = findViewById(R.id.button3);
+        button4 = findViewById(R.id.button4);
+        button5 = findViewById(R.id.button5);
+        button6 = findViewById(R.id.button6);
+        button7 = findViewById(R.id.button7);
+        button8 = findViewById(R.id.button8);
+
+
+        if(onePlayerMode) //If the user wants to play against AI
+        {
+
+            if(isPlayerX) //If it is the AI's turn
+            {
+                AI ai = new AI(); //Define the AI object
+                int bestMove = ai.bestSpot; //Define the best move
+                Log.d("Message","AI best "+bestMove);
+                //Toast.makeText(getApplicationContext(),bestMove,Toast.LENGTH_LONG).show();
+                /*
+                if(bestMove == 0)
+                {
+                    o0.setVisibility(View.VISIBLE);
+                    arr[0] = 'O';
+                    isPlayerX = !isPlayerX; //Change the turn
+                }
+                else if(bestMove==1)
+                {
+                        o1.setVisibility(View.VISIBLE);
+                        arr[1] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==2)
+                {
+                        o2.setVisibility(View.VISIBLE);
+                        arr[2] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==3)
+                {
+                        o3.setVisibility(View.VISIBLE);
+                        arr[3] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==4)
+                {
+                        o4.setVisibility(View.VISIBLE);
+                        arr[4] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==5)
+                {
+                        o5.setVisibility(View.VISIBLE);
+                        arr[5] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==6)
+                {
+                        o6.setVisibility(View.VISIBLE);
+                        arr[6] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==7)
+                {
+                        o7.setVisibility(View.VISIBLE);
+                        arr[7] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else if(bestMove==8)
+                {
+                        o8.setVisibility(View.VISIBLE);
+                        arr[8] = 'O';
+                        isPlayerX = !isPlayerX; //Change the turn
+                    }
+                else
+                    {
+                        Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
+                    }
+                    */
+            }
+
+
+
+            else  //If its the player's turn
+            {
+                    if(findViewById(v.getId()) == button0) //If user clicked top left
+                    {
+                        if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x0.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                            //x0.bringToFront();
+                            //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
+                            arr[0] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button1) //If user clicked top left
+                    {
+                        if(arr[1]!='X' && arr[1]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                            arr[1] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button2) //If user clicked top left
+                    {
+                        if(arr[2]!='X' && arr[2]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                            arr[2] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button3) //If user clicked top left
+                    {
+                        if(arr[3]!='X' && arr[3]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x3.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[3] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button4) //If user clicked top left
+                    {
+                        if(arr[4]!='X' && arr[4]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x4.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[4] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button5) //If user clicked top left
+                    {
+                        if(arr[5]!='X' && arr[5]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x5.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[5] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button6) //If user clicked top left
+                    {
+                        if(arr[6]!='X' && arr[6]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[6] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button7) //If user clicked top left
+                    {
+                        if(arr[7]!='X' && arr[7]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+                            x7.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[7] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    else if(findViewById(v.getId()) == button8) //If user clicked top left
+                    {
+                        if(arr[8]!='X' && arr[8]!= 'O') //Check to see if space occupied. 1 check if null?
+                        {
+
+                            x8.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[8] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else
+                        {
+                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+
+                    if(isGameOver())
+                    {
+                        String winner;
+                        if(isPlayerX) // If it is currently player X turn
+                        {
+                            winner = "O is the winner!";
+                        }
+                        else
+                        {
+                            winner = "X is the winner!";
+                        }
+                        Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                        gameOver=true;
+                    }
+            }
+
+
+
+        }
+
+
+        else  //If the user picks 2 player mode
+        {
+            if(!gameOver)
+            {
+                if(findViewById(v.getId()) == button0) //If user clicked top left
+                {
+                    if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x0.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                            //x0.bringToFront();
+                            //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
+                            arr[0] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o0.setVisibility(View.VISIBLE);
+                            arr[0] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button1) //If user clicked top left
+                {
+                    if(arr[1]!='X' && arr[1]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                            arr[1] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o1.setVisibility(View.VISIBLE);
+                            arr[1] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button2) //If user clicked top left
+                {
+                    if(arr[2]!='X' && arr[2]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
+                            arr[2] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o2.setVisibility(View.VISIBLE);
+                            arr[2] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button3) //If user clicked top left
+                {
+                    if(arr[3]!='X' && arr[3]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x3.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[3] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o3.setVisibility(View.VISIBLE);
+                            arr[3] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button4) //If user clicked top left
+                {
+                    if(arr[4]!='X' && arr[4]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x4.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[4] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o4.setVisibility(View.VISIBLE);
+                            arr[4] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button5) //If user clicked top left
+                {
+                    if(arr[5]!='X' && arr[5]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x5.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[5] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o5.setVisibility(View.VISIBLE);
+                            arr[5] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button6) //If user clicked top left
+                {
+                    if(arr[6]!='X' && arr[6]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[6] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o6.setVisibility(View.VISIBLE);
+                            arr[6] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button7) //If user clicked top left
+                {
+                    if(arr[7]!='X' && arr[7]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x7.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[7] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o7.setVisibility(View.VISIBLE);
+                            arr[7] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                else if(findViewById(v.getId()) == button8) //If user clicked top left
+                {
+                    if(arr[8]!='X' && arr[8]!= 'O') //Check to see if space occupied. 1 check if null?
+                    {
+                        if(isPlayerX) //If player is X
+                        {
+                            x8.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
+                            arr[8] = 'X'; //Store the piece in the array
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+
+                        else //Otherwise, player is O
+                        {
+                            o8.setVisibility(View.VISIBLE);
+                            arr[8] = 'O';
+                            isPlayerX = !isPlayerX; //Change the turn
+                        }
+                    }
+
+                    else
+                    {
+                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
+                    }
+                }
+
+                if(isGameOver())
+                {
+                    String winner;
+                    if(isPlayerX) // If it is currently player X turn
+                    {
+                        winner = "O is the winner!";
+                    }
+                    else
+                    {
+                        winner = "X is the winner!";
+                    }
+                    Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                    gameOver=true;
+                }
+            }
+        }
+
+
+    }
+
 
 }

@@ -4,8 +4,9 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
 
-public class AI {
-    char[] board = new char[]{0, 1, 2, 3, 4, 5, 6, 7, 8}; //Board array containing default pieces (empty)
+public class AI extends MainActivity{
+
+    char[] board = arr; //Board array containing default pieces (empty)
 
     char human = 'X'; //By default, player is X (Change later to have flag based on user input
     char cpu = 'O';
