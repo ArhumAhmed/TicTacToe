@@ -3,6 +3,9 @@ package com.ahmed.tictactoe;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.view.animation.Animation;
+import android.view.animation.AnimationUtils;
+import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -24,10 +27,20 @@ public class MainActivity extends AppCompatActivity {
     Button button7;
     Button button8;
 
+    TextView X;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
+        //RotateAnimation animation = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
+
+        //animation.setDuration(2000);
+        //animation.setRepeatCount(Animation.INFINITE);
+        Animation animation = AnimationUtils.loadAnimation(this,R.anim.rotate);
+        X = findViewById(R.id.X);
+        X.setAnimation(animation);
+        X.startAnimation(animation);
+
 
     }
 
