@@ -144,9 +144,10 @@ public class MainActivity extends AppCompatActivity {
             if(isPlayerX) //If it is the AI's turn
             {
                 AI ai = new AI(); //Define the AI object
+                boolean win = ai.win(arr,'X');
                 int bestMove = ai.bestSpot; //Define the best move
-                Log.d("Message","AI best "+bestMove);
-                //Toast.makeText(getApplicationContext(),bestMove,Toast.LENGTH_LONG).show();
+                //Log.d("Message","Win:"+win);
+                Toast.makeText(getApplicationContext(),bestMove,Toast.LENGTH_LONG).show();
                 /*
                 if(bestMove == 0)
                 {

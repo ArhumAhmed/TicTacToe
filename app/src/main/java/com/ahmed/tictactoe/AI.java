@@ -1,5 +1,8 @@
 package com.ahmed.tictactoe;
 
+import android.util.Log;
+import android.widget.Toast;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Vector;
@@ -28,25 +31,25 @@ public class AI extends MainActivity{
         if (board[0] == board[1] && board[1] == board[2] && board[1] == player) //First row all the same (and not empty)
         {
             return true;
-        } else if (board[3] == board[4] && board[4] == board[5] && board[4] != player) //Second row all the same
+        } else if (board[3] == board[4] && board[4] == board[5] && board[4] == player) //Second row all the same
         {
             return true;
-        } else if (board[6] == board[7] && board[7] == board[8] && board[7] != player) //Third row all the same
+        } else if (board[6] == board[7] && board[7] == board[8] && board[7] == player) //Third row all the same
         {
             return true;
-        } else if (board[0] == board[3] && board[3] == board[6] && board[3] != player) //First column all the same
+        } else if (board[0] == board[3] && board[3] == board[6] && board[3] == player) //First column all the same
         {
             return true;
-        } else if (board[1] == board[4] && board[4] == board[7] && board[4] != player) //Second column all the same
+        } else if (board[1] == board[4] && board[4] == board[7] && board[4] == player) //Second column all the same
         {
             return true;
-        } else if (board[2] == board[5] && board[5] == board[8] && board[5] != player) //Third column all the same
+        } else if (board[2] == board[5] && board[5] == board[8] && board[5] == player) //Third column all the same
         {
             return true;
-        } else if (board[0] == board[4] && board[4] == board[8] && board[4] != player) //Diagonal top left to bottom right the same
+        } else if (board[0] == board[4] && board[4] == board[8] && board[4] == player) //Diagonal top left to bottom right the same
         {
             return true;
-        } else if (board[2] == board[4] && board[4] == board[6] && board[4] != player) //Diagonal bottom left to top right the same
+        } else if (board[2] == board[4] && board[4] == board[6] && board[4] == player) //Diagonal bottom left to top right the same
         {
             return true;
         }
@@ -60,7 +63,6 @@ public class AI extends MainActivity{
         //Move result = new Move();
         int result;
         Vector emptySpaces = emptySpaces(newBoard); //Get all the empty spots
-
         if (win(newBoard, human)) //If the human wins, return negative score
         {
             return -10;
@@ -71,7 +73,8 @@ public class AI extends MainActivity{
         {
             return 0;
         }
-
+        //Log.d("whatever","Ok got past initial if");
+        //Toast.makeText(getApplicationContext(),"Got pass initial if statement",Toast.LENGTH_LONG).show();
         //Move[] moves = new Move[emptySpaces.size()]; //Create array of Move objects of size of empty spaces
         //Vector Move moves = new Vector;
         List<Move> moves = new ArrayList<Move>();
