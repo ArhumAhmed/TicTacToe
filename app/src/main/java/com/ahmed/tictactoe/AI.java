@@ -6,7 +6,7 @@ import java.util.Vector;
 
 public class AI extends MainActivity{
 
-    char[] board = arr; //Board array containing default pieces (empty)
+    //char[] board = arr; //Board array containing default pieces (empty)
 
     char human = 'X'; //By default, player is X (Change later to have flag based on user input
     char cpu = 'O';
@@ -127,7 +127,7 @@ public class AI extends MainActivity{
         return moves.indexOf(bestMove); //Return the best move
     }
 
-    int bestSpot =  minimax(board, cpu);
+    int bestSpot =  minimax(arr, cpu);
 
 
 }
