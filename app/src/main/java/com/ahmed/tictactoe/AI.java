@@ -62,14 +62,18 @@ public class AI extends MainActivity{
 
         //Move result = new Move();
         int result;
-        Vector emptySpaces = emptySpaces(newBoard); //Get all the empty spots
+        Vector emptySpots = emptySpaces(newBoard); //Get all the empty spots
+        for(int i=0;i<newBoard.length;i++)
+        {
+            Log.d("emptyspace","emptyspaces "+ newBoard[i]);
+        }
         if (win(newBoard, human)) //If the human wins, return negative score
         {
             return -10;
         } else if (win(newBoard, cpu)) //If the AI wins, return positive score
         {
             return 10;
-        } else if (emptySpaces.size() == 0) //If there are no empty spaces, return 0 (draw)
+        } else if (emptySpots.size() == 0) //If there are no empty spaces, return 0 (draw)
         {
             return 0;
         }
@@ -78,13 +82,13 @@ public class AI extends MainActivity{
         //Move[] moves = new Move[emptySpaces.size()]; //Create array of Move objects of size of empty spaces
         //Vector Move moves = new Vector;
         List<Move> moves = new ArrayList<Move>();
-        for (int i = 0; i < emptySpaces.size(); i++) {
+        for (int i = 0; i < emptySpots.size(); i++) {
             //create an object for each and store the index of that spot
             Move move = new Move();
-            move.index = newBoard[emptySpaces.indexOf(i)];
+            move.index = newBoard[emptySpots.indexOf(i)];
 
             // set the empty spot to the current player
-            newBoard[emptySpaces.indexOf(i)] = player;
+            newBoard[emptySpots.indexOf(i)] = player;
 
             /*collect the score resulted from calling minimax
             on the opponent of the current player*/
@@ -97,7 +101,7 @@ public class AI extends MainActivity{
             }
 
             // reset the spot to empty
-            newBoard[emptySpaces.indexOf(i)] = move.index;
+            newBoard[emptySpots.indexOf(i)] = move.index;
 
             // push the object to the array
             moves.add(move);
