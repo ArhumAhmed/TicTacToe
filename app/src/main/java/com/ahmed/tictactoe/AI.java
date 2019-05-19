@@ -1,55 +1,55 @@
 package com.ahmed.tictactoe;
 
 import android.util.Log;
-import android.widget.Toast;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Vector;
 
 public class AI extends MainActivity{
 
-    //char[] board = arr; //Board array containing default pieces (empty)
+    //char[] newBoard = arr; //Board array containing default pieces (empty)
 
     char human = 'X'; //By default, player is X (Change later to have flag based on user input
     char cpu = 'O';
+    List<Move> availableMoves;
+    Move aiMove;
 
-    Vector emptySpaces(char[] board) //Method for finding empty indices
+    List<Move> getEmptySpaces() //Method for finding empty indices
     {
-        Vector emptyIndices = new Vector();
-        for (int i = 0; i < board.length; i++) //Iterate through all elements of board (9)
+        availableMoves = new ArrayList<>();
+        for (int i = 0; i < arr.length; i++) //Iterate through all elements of board (9)
         {
-            if (board[i] != 'X' || board[i]!= 'O') {
-                emptyIndices.add(i);
+            if (arr[i] != 'X' && arr[i]!= 'O') {
+                availableMoves.add(new Move(i));
             }
         }
 
-        return emptyIndices;
+        return availableMoves;
     }
 
-    boolean win(char[] board, char player) {
-        if (board[0] == board[1] && board[1] == board[2] && board[1] == player) //First row all the same (and not empty)
+    boolean win(char[] arr, char player) {
+        if (arr[0] == arr[1] && arr[1] == arr[2] && arr[1] == player) //First row all the same (and not empty)
         {
             return true;
-        } else if (board[3] == board[4] && board[4] == board[5] && board[4] == player) //Second row all the same
+        } else if (arr[3] == arr[4] && arr[4] == arr[5] && arr[4] == player) //Second row all the same
         {
             return true;
-        } else if (board[6] == board[7] && board[7] == board[8] && board[7] == player) //Third row all the same
+        } else if (arr[6] == arr[7] && arr[7] == arr[8] && arr[7] == player) //Third row all the same
         {
             return true;
-        } else if (board[0] == board[3] && board[3] == board[6] && board[3] == player) //First column all the same
+        } else if (arr[0] == arr[3] && arr[3] == arr[6] && arr[3] == player) //First column all the same
         {
             return true;
-        } else if (board[1] == board[4] && board[4] == board[7] && board[4] == player) //Second column all the same
+        } else if (arr[1] == arr[4] && arr[4] == arr[7] && arr[4] == player) //Second column all the same
         {
             return true;
-        } else if (board[2] == board[5] && board[5] == board[8] && board[5] == player) //Third column all the same
+        } else if (arr[2] == arr[5] && arr[5] == arr[8] && arr[5] == player) //Third column all the same
         {
             return true;
-        } else if (board[0] == board[4] && board[4] == board[8] && board[4] == player) //Diagonal top left to bottom right the same
+        } else if (arr[0] == arr[4] && arr[4] == arr[8] && arr[4] == player) //Diagonal top left to bottom right the same
         {
             return true;
-        } else if (board[2] == board[4] && board[4] == board[6] && board[4] == player) //Diagonal bottom left to top right the same
+        } else if (arr[2] == arr[4] && arr[4] == arr[6] && arr[4] == player) //Diagonal bottom left to top right the same
         {
             return true;
         }
@@ -58,83 +58,85 @@ public class AI extends MainActivity{
         return false;
     }
 
-    int minimax(char[] newBoard, char player) {
+    void makeMove(Move move, char player)
+    {
+        arr[move.index] = player;
+    }
 
-        //Move result = new Move();
-        int result;
-        Vector emptySpots = emptySpaces(newBoard); //Get all the empty spots
-        for(int i=0;i<newBoard.length;i++)
+    int minimax(int depth, int turn) {
+
+        if (win(arr, human)) //If the human wins, return negative score
         {
-            Log.d("emptyspace","emptyspaces "+ newBoard[i]);
+            return -1;
         }
-        if (win(newBoard, human)) //If the human wins, return negative score
+        if (win(arr, cpu)) //If the AI wins, return positive score
         {
-            return -10;
-        } else if (win(newBoard, cpu)) //If the AI wins, return positive score
-        {
-            return 10;
-        } else if (emptySpots.size() == 0) //If there are no empty spaces, return 0 (draw)
+            return 1;
+        }
+
+        List<Move> movesAvailable = getEmptySpaces(); //Get all the empty spots
+
+        if (movesAvailable.isEmpty()) //If there are no empty spaces, return 0 (draw)
         {
             return 0;
         }
-        //Log.d("whatever","Ok got past initial if");
-        //Toast.makeText(getApplicationContext(),"Got pass initial if statement",Toast.LENGTH_LONG).show();
-        //Move[] moves = new Move[emptySpaces.size()]; //Create array of Move objects of size of empty spaces
-        //Vector Move moves = new Vector;
-        List<Move> moves = new ArrayList<Move>();
-        for (int i = 0; i < emptySpots.size(); i++) {
+
+        int min = Integer.MAX_VALUE, max = Integer.MIN_VALUE;
+
+        for (int i = 0; i < movesAvailable.size(); i++) {
             //create an object for each and store the index of that spot
-            Move move = new Move();
-            move.index = newBoard[emptySpots.indexOf(i)];
-
-            // set the empty spot to the current player
-            newBoard[emptySpots.indexOf(i)] = player;
-
-            /*collect the score resulted from calling minimax
-            on the opponent of the current player*/
-            if (player == cpu) {
-                result = minimax(newBoard,human);
-                move.score = result;
-            } else {
-                result = minimax(newBoard, cpu);
-                move.score = result;
-            }
-
-            // reset the spot to empty
-            newBoard[emptySpots.indexOf(i)] = move.index;
-
-            // push the object to the array
-            moves.add(move);
-        }
-
-        int bestMove=0; //Default initialization??
-
-        if(player == cpu) //Could be wrong. wanted ===
-        {
-            int bestScore = -10000;
-            for(int i = 0; i < moves.size(); i++){
-                if(moves.get(i).score > bestScore){
-                    bestScore = moves.get(i).score;
-                    bestMove = i;
+            Move move = movesAvailable.get(i);
+            if (turn == 1)
+            {
+                makeMove(move,human);
+                int currentScore = minimax(depth + 1, 2);
+                max = Math.max(currentScore, max);
+                if(currentScore >= 0)
+                {
+                    if(depth == 0)
+                    {
+                        aiMove = move;
+                    }
+                }
+                if(currentScore == 1)
+                {
+                    arr[move.index] = 0;
+                    break;
+                }
+                if(i == movesAvailable.size()-1 && max < 0)
+                {
+                    if(depth == 0)
+                    {
+                        aiMove = move;
+                    }
                 }
             }
-        }
-
-        else // else loop over the moves and choose the move with the lowest score
-        {
-            int bestScore = 10000;
-            for(int i = 0; i < moves.size(); i++){
-                if(moves.get(i).score < bestScore){
-                    bestScore = moves.get(i).score;
-                    bestMove = i;
+            else if (turn == 2) {
+                makeMove(move, cpu);
+                int currentScore = minimax(depth + 1, 1);
+                min = Math.min(currentScore, min);
+                if(min == -1)
+                {
+                    arr[move.index] = 0;
+                    aiMove = move;
+                    break;
                 }
             }
+           arr[move.index] = 0; //Reset this point
         }
 
-        return moves.indexOf(bestMove); //Return the best move
-    }
+            return turn==1?max:min;
+        }
 
-    int bestSpot =  minimax(arr, cpu);
+     Move getBestMove()
+     {
+         Move bestMove = new Move(1);
+         bestMove.score = minimax(5,2);
+         bestMove = aiMove;
+
+         return bestMove;
+     }
+
 
 
 }

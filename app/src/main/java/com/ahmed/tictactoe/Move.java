@@ -2,7 +2,12 @@ package com.ahmed.tictactoe;
 
 public class Move {
 
-    char index;
+    int index;
     int score;
+
+    Move(int index)
+    {
+        this.index = index;
+    }
 
 }
