@@ -101,6 +101,99 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
+    public void aiMove(View v)
+    {
+
+        //X piece TextViews
+        TextView x0=findViewById(R.id.x0);
+        TextView x1=findViewById(R.id.x1);
+        TextView x2=findViewById(R.id.x2);
+        TextView x3=findViewById(R.id.x3);
+        TextView x4=findViewById(R.id.x4);
+        TextView x5=findViewById(R.id.x5);
+        TextView x6=findViewById(R.id.x6);
+        TextView x7=findViewById(R.id.x7);
+        TextView x8=findViewById(R.id.x8);
+
+        //O piece TextViews
+        TextView o0=findViewById(R.id.o0);
+        TextView o1=findViewById(R.id.o1);
+        TextView o2=findViewById(R.id.o2);
+        TextView o3=findViewById(R.id.o3);
+        TextView o4=findViewById(R.id.o4);
+        TextView o5=findViewById(R.id.o5);
+        TextView o6=findViewById(R.id.o6);
+        TextView o7=findViewById(R.id.o7);
+        TextView o8=findViewById(R.id.o8);
+
+
+
+
+        AI ai = new AI(); //Define the AI object
+        Move bestMove = new Move(15);
+        bestMove = ai.getBestMove(); //Define the best move
+
+        if(bestMove.index == 0)
+        {
+            o0.setVisibility(View.VISIBLE);
+            arr[0] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==1)
+        {
+            o1.setVisibility(View.VISIBLE);
+            arr[1] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==2)
+        {
+            o2.setVisibility(View.VISIBLE);
+            arr[2] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==3)
+        {
+            o3.setVisibility(View.VISIBLE);
+            arr[3] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==4)
+        {
+            o4.setVisibility(View.VISIBLE);
+            arr[4] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==5)
+        {
+            o5.setVisibility(View.VISIBLE);
+            arr[5] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==6)
+        {
+            o6.setVisibility(View.VISIBLE);
+            arr[6] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==7)
+        {
+            o7.setVisibility(View.VISIBLE);
+            arr[7] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else if(bestMove.index==8)
+        {
+            o8.setVisibility(View.VISIBLE);
+            arr[8] = 'O';
+            isPlayerX = !isPlayerX; //Change the turn
+        }
+        else
+        {
+            Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
+            Log.d("Move:","BestMove: "+bestMove);
+        }
+
+    }
     public void userMove(View v)
     {
 
@@ -141,79 +234,14 @@ public class MainActivity extends AppCompatActivity {
         if(onePlayerMode) //If the user wants to play against AI
         {
 
-            if(!isPlayerX) //If it is the AI's turn
+           /* if(!isPlayerX) //If it is the AI's turn
             {
-                AI ai = new AI(); //Define the AI object
-                boolean win = ai.win(arr,'X');
-                Move bestMove = new Move(15);
-                bestMove = ai.getBestMove(); //Define the best move
-
-                if(bestMove.index == 0)
-                {
-                    o0.setVisibility(View.VISIBLE);
-                    arr[0] = 'O';
-                    isPlayerX = !isPlayerX; //Change the turn
-                }
-                else if(bestMove.index==1)
-                {
-                        o1.setVisibility(View.VISIBLE);
-                        arr[1] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==2)
-                {
-                        o2.setVisibility(View.VISIBLE);
-                        arr[2] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==3)
-                {
-                        o3.setVisibility(View.VISIBLE);
-                        arr[3] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==4)
-                {
-                        o4.setVisibility(View.VISIBLE);
-                        arr[4] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==5)
-                {
-                        o5.setVisibility(View.VISIBLE);
-                        arr[5] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==6)
-                {
-                        o6.setVisibility(View.VISIBLE);
-                        arr[6] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==7)
-                {
-                        o7.setVisibility(View.VISIBLE);
-                        arr[7] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else if(bestMove.index==8)
-                {
-                        o8.setVisibility(View.VISIBLE);
-                        arr[8] = 'O';
-                        isPlayerX = !isPlayerX; //Change the turn
-                    }
-                else
-                    {
-                        Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
-                        Log.d("Move:","BestMove: "+bestMove);
-                    }
-
+                aiMove(v);
             }
 
 
-
             else  //If its the player's turn
-            {
+            { */
                     if(findViewById(v.getId()) == button0) //If user clicked top left
                     {
                         if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
@@ -223,7 +251,7 @@ public class MainActivity extends AppCompatActivity {
                             //Toast.makeText(getApplicationContext(),"Beep",Toast.LENGTH_LONG).show();
                             arr[0] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
 
                         }
 
@@ -240,7 +268,7 @@ public class MainActivity extends AppCompatActivity {
                             x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
                             arr[1] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -256,7 +284,7 @@ public class MainActivity extends AppCompatActivity {
                             x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
                             arr[2] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -272,7 +300,7 @@ public class MainActivity extends AppCompatActivity {
                             x3.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[3] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -288,7 +316,7 @@ public class MainActivity extends AppCompatActivity {
                             x4.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[4] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -304,7 +332,7 @@ public class MainActivity extends AppCompatActivity {
                             x5.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[5] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -320,7 +348,7 @@ public class MainActivity extends AppCompatActivity {
                             x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[6] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -336,7 +364,7 @@ public class MainActivity extends AppCompatActivity {
                             x7.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[7] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -353,7 +381,7 @@ public class MainActivity extends AppCompatActivity {
                             x8.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[8] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            userMove(v); //launch the method again with turn switched
+                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -376,9 +404,11 @@ public class MainActivity extends AppCompatActivity {
                         Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
                         gameOver=true;
                     }
+            //}
+            if(!isPlayerX)
+            {
+                aiMove(v);
             }
-
-
 
         }
 
