@@ -17,7 +17,7 @@ public class MainActivity extends AppCompatActivity {
     boolean isPlayerX=true; //Boolean to track if player turn
     boolean gameOver=false;
     boolean onePlayerMode = false;
-    char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
+    public static char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
     //Buttons representing the sector
     Button button0;
     Button button1;

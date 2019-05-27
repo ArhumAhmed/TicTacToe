@@ -5,7 +5,7 @@ import android.util.Log;
 import java.util.ArrayList;
 import java.util.List;
 
-public class AI extends MainActivity{
+public class AI {
 
     //char[] newBoard = arr; //Board array containing default pieces (empty)
 
@@ -13,13 +13,14 @@ public class AI extends MainActivity{
     char cpu = 'O';
     List<Move> availableMoves;
     Move aiMove;
+    char[] board = MainActivity.arr;
 
     List<Move> getEmptySpaces() //Method for finding empty indices
     {
         availableMoves = new ArrayList<>();
-        for (int i = 0; i < arr.length; i++) //Iterate through all elements of board (9)
+        for (int i = 0; i < board.length; i++) //Iterate through all elements of board (9)
         {
-            if (arr[i] != 'X' && arr[i]!= 'O') {
+            if (board[i] != 'X' && board[i]!= 'O') {
                 availableMoves.add(new Move(i));
             }
         }
@@ -27,29 +28,29 @@ public class AI extends MainActivity{
         return availableMoves;
     }
 
-    boolean win(char[] arr, char player) {
-        if (arr[0] == arr[1] && arr[1] == arr[2] && arr[1] == player) //First row all the same (and not empty)
+    boolean win(char[] board, char player) {
+        if (board[0] == board[1] && board[1] == board[2] && board[1] == player) //First row all the same (and not empty)
         {
             return true;
-        } else if (arr[3] == arr[4] && arr[4] == arr[5] && arr[4] == player) //Second row all the same
+        } else if (board[3] == board[4] && board[4] == board[5] && board[4] == player) //Second row all the same
         {
             return true;
-        } else if (arr[6] == arr[7] && arr[7] == arr[8] && arr[7] == player) //Third row all the same
+        } else if (board[6] == board[7] && board[7] == board[8] && board[7] == player) //Third row all the same
         {
             return true;
-        } else if (arr[0] == arr[3] && arr[3] == arr[6] && arr[3] == player) //First column all the same
+        } else if (board[0] == board[3] && board[3] == board[6] && board[3] == player) //First column all the same
         {
             return true;
-        } else if (arr[1] == arr[4] && arr[4] == arr[7] && arr[4] == player) //Second column all the same
+        } else if (board[1] == board[4] && board[4] == board[7] && board[4] == player) //Second column all the same
         {
             return true;
-        } else if (arr[2] == arr[5] && arr[5] == arr[8] && arr[5] == player) //Third column all the same
+        } else if (board[2] == board[5] && board[5] == board[8] && board[5] == player) //Third column all the same
         {
             return true;
-        } else if (arr[0] == arr[4] && arr[4] == arr[8] && arr[4] == player) //Diagonal top left to bottom right the same
+        } else if (board[0] == board[4] && board[4] == board[8] && board[4] == player) //Diagonal top left to bottom right the same
         {
             return true;
-        } else if (arr[2] == arr[4] && arr[4] == arr[6] && arr[4] == player) //Diagonal bottom left to top right the same
+        } else if (board[2] == board[4] && board[4] == board[6] && board[4] == player) //Diagonal bottom left to top right the same
         {
             return true;
         }
@@ -60,16 +61,16 @@ public class AI extends MainActivity{
 
     void makeMove(Move move, char player)
     {
-        arr[move.index] = player;
+        board[move.index] = player;
     }
 
     int minimax(int depth, int turn) {
 
-        if (win(arr, human)) //If the human wins, return negative score
+        if (win(board, human)) //If the human wins, return negative score
         {
             return -1;
         }
-        if (win(arr, cpu)) //If the AI wins, return positive score
+        if (win(board, cpu)) //If the AI wins, return positive score
         {
             return 1;
         }
@@ -100,7 +101,7 @@ public class AI extends MainActivity{
                 }
                 if(currentScore == 1)
                 {
-                    arr[move.index] = 0;
+                    board[move.index] = 0;
                     break;
                 }
                 if(i == movesAvailable.size()-1 && max < 0)
@@ -117,12 +118,11 @@ public class AI extends MainActivity{
                 min = Math.min(currentScore, min);
                 if(min == -1)
                 {
-                    arr[move.index] = 0;
-                    aiMove = move;
+                    board[move.index] = 0;
                     break;
                 }
             }
-           arr[move.index] = 0; //Reset this point
+           board[move.index] = 0; //Reset this point
         }
 
             return turn==1?max:min;
@@ -131,7 +131,7 @@ public class AI extends MainActivity{
      Move getBestMove()
      {
          Move bestMove = new Move(1);
-         bestMove.score = minimax(5,2);
+         bestMove.score = minimax(0,2);
          bestMove = aiMove;
 
          return bestMove;
