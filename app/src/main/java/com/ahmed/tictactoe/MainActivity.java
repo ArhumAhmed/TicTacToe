@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Arrays;
+
 public class MainActivity extends AppCompatActivity {
 
     //boolean turn; //Flag that tracks whose turn it is.
@@ -34,6 +36,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
+        animX();
+
+
+    }
+
+    public void animX()
+    {
         RotateAnimation animation = new RotateAnimation(0,360, Animation.RELATIVE_TO_SELF,0.5f,Animation.RELATIVE_TO_SELF,0.5f);
 
         animation.setDuration(1800);
@@ -42,8 +51,6 @@ public class MainActivity extends AppCompatActivity {
         X = findViewById(R.id.X);
         X.setAnimation(animation);
         X.startAnimation(animation);
-
-
     }
 
     boolean isXWinner()
@@ -153,7 +160,65 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
     }
 
+    public void restart(View v)
+    {
+        //X piece TextViews
+        TextView x0=findViewById(R.id.x0);
+        TextView x1=findViewById(R.id.x1);
+        TextView x2=findViewById(R.id.x2);
+        TextView x3=findViewById(R.id.x3);
+        TextView x4=findViewById(R.id.x4);
+        TextView x5=findViewById(R.id.x5);
+        TextView x6=findViewById(R.id.x6);
+        TextView x7=findViewById(R.id.x7);
+        TextView x8=findViewById(R.id.x8);
 
+        //O piece TextViews
+        TextView o0=findViewById(R.id.o0);
+        TextView o1=findViewById(R.id.o1);
+        TextView o2=findViewById(R.id.o2);
+        TextView o3=findViewById(R.id.o3);
+        TextView o4=findViewById(R.id.o4);
+        TextView o5=findViewById(R.id.o5);
+        TextView o6=findViewById(R.id.o6);
+        TextView o7=findViewById(R.id.o7);
+        TextView o8=findViewById(R.id.o8);
+
+        //Set visibility of each TextView back to gone (Clear board)
+        x0.setVisibility(View.GONE);
+        x1.setVisibility(View.GONE);
+        x2.setVisibility(View.GONE);
+        x3.setVisibility(View.GONE);
+        x4.setVisibility(View.GONE);
+        x5.setVisibility(View.GONE);
+        x6.setVisibility(View.GONE);
+        x7.setVisibility(View.GONE);
+        x8.setVisibility(View.GONE);
+        o0.setVisibility(View.GONE);
+        o1.setVisibility(View.GONE);
+        o2.setVisibility(View.GONE);
+        o3.setVisibility(View.GONE);
+        o4.setVisibility(View.GONE);
+        o5.setVisibility(View.GONE);
+        o6.setVisibility(View.GONE);
+        o7.setVisibility(View.GONE);
+        o8.setVisibility(View.GONE);
+
+        //Reset array with 0 values
+        for(int i=0;i<arr.length;i++)
+        {
+            arr[i] = 0;
+        }
+        //Restart board status
+        gameOver =false;
+    }
+
+    public void mainMenu(View v)
+    {
+        restart(v);
+        setContentView(R.layout.menu_layout);
+        animX();
+    }
     public void aiMove(View v) //Method for AI to take it's turn
     {
 
