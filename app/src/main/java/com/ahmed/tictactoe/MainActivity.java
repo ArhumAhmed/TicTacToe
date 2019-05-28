@@ -46,44 +46,96 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    boolean isXWinner()
+    {
+        if(arr[0]==arr[1] && arr[1]==arr[2] && arr[1]=='X') //First row all the same (and not empty)
+        {
+            return true;
+        }
+
+        else if (arr[3]==arr[4] && arr[4]==arr[5] && arr[4]=='X') //Second row all the same
+        {
+            return true;
+        }
+
+        else if (arr[6]==arr[7] && arr[7]==arr[8] && arr[7]=='X') //Third row all the same
+        {
+            return true;
+        }
+
+        else if (arr[0]==arr[3] && arr[3]==arr[6] && arr[3]=='X') //First column all the same
+        {
+            return true;
+        }
+
+        else if (arr[1]==arr[4] && arr[4]==arr[7] && arr[4]=='X') //Second column all the same
+        {
+            return true;
+        }
+
+        else if (arr[2]==arr[5] && arr[5]==arr[8] && arr[5]=='X') //Third column all the same
+        {
+            return true;
+        }
+
+        else if (arr[0]==arr[4] && arr[4]==arr[8] && arr[4]=='X') //Diagonal top left to bottom right the same
+        {
+            return true;
+        }
+
+        else if (arr[2]==arr[4] && arr[4]==arr[6] && arr[4]=='X') //Diagonal bottom left to top right the same
+        {
+            return true;
+        }
+        return false;
+    }
+
+    boolean isOWinner()
+    {
+        if(arr[0]==arr[1] && arr[1]==arr[2] && arr[1]=='O') //First row all the same (and not empty)
+        {
+            return true;
+        }
+
+        else if (arr[3]==arr[4] && arr[4]==arr[5] && arr[4]=='O') //Second row all the same
+        {
+            return true;
+        }
+
+        else if (arr[6]==arr[7] && arr[7]==arr[8] && arr[7]=='O') //Third row all the same
+        {
+            return true;
+        }
+
+        else if (arr[0]==arr[3] && arr[3]==arr[6] && arr[3]=='O') //First column all the same
+        {
+            return true;
+        }
+
+        else if (arr[1]==arr[4] && arr[4]==arr[7] && arr[4]=='O') //Second column all the same
+        {
+            return true;
+        }
+
+        else if (arr[2]==arr[5] && arr[5]==arr[8] && arr[5]=='O') //Third column all the same
+        {
+            return true;
+        }
+
+        else if (arr[0]==arr[4] && arr[4]==arr[8] && arr[4]=='O') //Diagonal top left to bottom right the same
+        {
+            return true;
+        }
+
+        else if (arr[2]==arr[4] && arr[4]==arr[6] && arr[4]=='O') //Diagonal bottom left to top right the same
+        {
+            return true;
+        }
+        return false;
+    }
     boolean isGameOver()
     {
-        if(arr[0]==arr[1] && arr[1]==arr[2] && arr[1]!=0) //First row all the same (and not empty)
-        {
-            return true;
-        }
-
-        else if (arr[3]==arr[4] && arr[4]==arr[5] && arr[4]!=0) //Second row all the same
-        {
-            return true;
-        }
-
-        else if (arr[6]==arr[7] && arr[7]==arr[8] && arr[7]!=0) //Third row all the same
-        {
-            return true;
-        }
-
-        else if (arr[0]==arr[3] && arr[3]==arr[6] && arr[3]!=0) //First column all the same
-        {
-            return true;
-        }
-
-        else if (arr[1]==arr[4] && arr[4]==arr[7] && arr[4]!=0) //Second column all the same
-        {
-            return true;
-        }
-
-        else if (arr[2]==arr[5] && arr[5]==arr[8] && arr[5]!=0) //Third column all the same
-        {
-            return true;
-        }
-
-        else if (arr[0]==arr[4] && arr[4]==arr[8] && arr[4]!=0) //Diagonal top left to bottom right the same
-        {
-            return true;
-        }
-
-        else if (arr[2]==arr[4] && arr[4]==arr[6] && arr[4]!=0) //Diagonal bottom left to top right the same
+        if(arr[0]!=0 && arr[1]!=0 && arr[2]!=0 && arr[3]!=0 && arr[4]!=0 && arr[5]!=0 && arr[6]!=0 && arr[7]!=0 && arr[8]!=0)
         {
             return true;
         }
@@ -104,94 +156,120 @@ public class MainActivity extends AppCompatActivity {
     public void aiMove(View v)
     {
 
-        //X piece TextViews
-        TextView x0=findViewById(R.id.x0);
-        TextView x1=findViewById(R.id.x1);
-        TextView x2=findViewById(R.id.x2);
-        TextView x3=findViewById(R.id.x3);
-        TextView x4=findViewById(R.id.x4);
-        TextView x5=findViewById(R.id.x5);
-        TextView x6=findViewById(R.id.x6);
-        TextView x7=findViewById(R.id.x7);
-        TextView x8=findViewById(R.id.x8);
+        if(!gameOver)
 
-        //O piece TextViews
-        TextView o0=findViewById(R.id.o0);
-        TextView o1=findViewById(R.id.o1);
-        TextView o2=findViewById(R.id.o2);
-        TextView o3=findViewById(R.id.o3);
-        TextView o4=findViewById(R.id.o4);
-        TextView o5=findViewById(R.id.o5);
-        TextView o6=findViewById(R.id.o6);
-        TextView o7=findViewById(R.id.o7);
-        TextView o8=findViewById(R.id.o8);
+        {
+            //X piece TextViews
+            TextView x0=findViewById(R.id.x0);
+            TextView x1=findViewById(R.id.x1);
+            TextView x2=findViewById(R.id.x2);
+            TextView x3=findViewById(R.id.x3);
+            TextView x4=findViewById(R.id.x4);
+            TextView x5=findViewById(R.id.x5);
+            TextView x6=findViewById(R.id.x6);
+            TextView x7=findViewById(R.id.x7);
+            TextView x8=findViewById(R.id.x8);
+
+            //O piece TextViews
+            TextView o0=findViewById(R.id.o0);
+            TextView o1=findViewById(R.id.o1);
+            TextView o2=findViewById(R.id.o2);
+            TextView o3=findViewById(R.id.o3);
+            TextView o4=findViewById(R.id.o4);
+            TextView o5=findViewById(R.id.o5);
+            TextView o6=findViewById(R.id.o6);
+            TextView o7=findViewById(R.id.o7);
+            TextView o8=findViewById(R.id.o8);
 
 
 
 
-        AI ai = new AI(); //Define the AI object
-        Move bestMove = new Move(15);
-        bestMove = ai.getBestMove(); //Define the best move
+            AI ai = new AI(); //Define the AI object
+            Move bestMove = new Move(15);
+            bestMove = ai.getBestMove(); //Define the best move
 
-        if(bestMove.index == 0)
-        {
-            o0.setVisibility(View.VISIBLE);
-            arr[0] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
+            if(bestMove.index == 0)
+            {
+                o0.setVisibility(View.VISIBLE);
+                arr[0] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==1)
+            {
+                o1.setVisibility(View.VISIBLE);
+                arr[1] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==2)
+            {
+                o2.setVisibility(View.VISIBLE);
+                arr[2] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==3)
+            {
+                o3.setVisibility(View.VISIBLE);
+                arr[3] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==4)
+            {
+                o4.setVisibility(View.VISIBLE);
+                arr[4] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==5)
+            {
+                o5.setVisibility(View.VISIBLE);
+                arr[5] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==6)
+            {
+                o6.setVisibility(View.VISIBLE);
+                arr[6] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==7)
+            {
+                o7.setVisibility(View.VISIBLE);
+                arr[7] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else if(bestMove.index==8)
+            {
+                o8.setVisibility(View.VISIBLE);
+                arr[8] = 'O';
+                isPlayerX = !isPlayerX; //Change the turn
+            }
+            else
+            {
+                Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
+                Log.d("Move:","BestMove: "+bestMove);
+            }
+
+            if(isGameOver() || isXWinner() || isOWinner())
+            {
+                String winner;
+                if(isOWinner())
+                {
+                    winner = "O is the winner!";
+                }
+                else if(isXWinner())
+                {
+                    winner = "X is the winner!";
+                }
+                else
+                {
+                    winner="Tie!";
+                }
+                Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                gameOver=true;
+            }
+
         }
-        else if(bestMove.index==1)
-        {
-            o1.setVisibility(View.VISIBLE);
-            arr[1] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==2)
-        {
-            o2.setVisibility(View.VISIBLE);
-            arr[2] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==3)
-        {
-            o3.setVisibility(View.VISIBLE);
-            arr[3] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==4)
-        {
-            o4.setVisibility(View.VISIBLE);
-            arr[4] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==5)
-        {
-            o5.setVisibility(View.VISIBLE);
-            arr[5] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==6)
-        {
-            o6.setVisibility(View.VISIBLE);
-            arr[6] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==7)
-        {
-            o7.setVisibility(View.VISIBLE);
-            arr[7] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else if(bestMove.index==8)
-        {
-            o8.setVisibility(View.VISIBLE);
-            arr[8] = 'O';
-            isPlayerX = !isPlayerX; //Change the turn
-        }
-        else
-        {
-            Toast.makeText(getApplicationContext(),"Didn't find an int for bestmove",Toast.LENGTH_LONG).show();
-            Log.d("Move:","BestMove: "+bestMove);
-        }
+
+
 
     }
     public void userMove(View v)
@@ -242,6 +320,9 @@ public class MainActivity extends AppCompatActivity {
 
             else  //If its the player's turn
             { */
+
+           if(!gameOver)
+            {
                     if(findViewById(v.getId()) == button0) //If user clicked top left
                     {
                         if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
@@ -390,24 +471,29 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    if(isGameOver())
+                if(isGameOver() || isXWinner() || isOWinner())
+                {
+                    String winner;
+                    if(isOWinner())
                     {
-                        String winner;
-                        if(isPlayerX) // If it is currently player X turn
-                        {
-                            winner = "O is the winner!";
-                        }
-                        else
-                        {
-                            winner = "X is the winner!";
-                        }
-                        Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
-                        gameOver=true;
+                        winner = "O is the winner!";
                     }
-            //}
-            if(!isPlayerX)
-            {
-                aiMove(v);
+                    else if(isXWinner())
+                    {
+                        winner = "X is the winner!";
+                    }
+                    else
+                    {
+                        winner="Tie!";
+                    }
+                    Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                    gameOver=true;
+                }
+
+                if((!isPlayerX) && (!gameOver))
+                {
+                    aiMove(v);
+                }
             }
 
         }
@@ -646,16 +732,20 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                if(isGameOver())
+                if(isGameOver() || isXWinner() || isOWinner())
                 {
                     String winner;
-                    if(isPlayerX) // If it is currently player X turn
+                    if(isOWinner())
                     {
                         winner = "O is the winner!";
                     }
-                    else
+                    else if(isXWinner())
                     {
                         winner = "X is the winner!";
+                    }
+                    else
+                    {
+                        winner="Tie!";
                     }
                     Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
                     gameOver=true;
