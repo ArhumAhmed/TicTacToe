@@ -11,6 +11,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import org.w3c.dom.Text;
+
 import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
@@ -184,6 +186,11 @@ public class MainActivity extends AppCompatActivity {
         TextView o7=findViewById(R.id.o7);
         TextView o8=findViewById(R.id.o8);
 
+        //Winner TextViews
+        TextView XWon = findViewById(R.id.XWon);
+        TextView OWon = findViewById(R.id.OWon);
+        TextView Tie = findViewById(R.id.Tie);
+
         //Set visibility of each TextView back to gone (Clear board)
         x0.setVisibility(View.GONE);
         x1.setVisibility(View.GONE);
@@ -204,6 +211,11 @@ public class MainActivity extends AppCompatActivity {
         o7.setVisibility(View.GONE);
         o8.setVisibility(View.GONE);
 
+        //Set visibility of Winner message back to gone
+        XWon.setVisibility(View.GONE);
+        OWon.setVisibility(View.GONE);
+        Tie.setVisibility(View.GONE);
+
         //Reset array with 0 values
         for(int i=0;i<arr.length;i++)
         {
@@ -211,6 +223,7 @@ public class MainActivity extends AppCompatActivity {
         }
         //Restart board status
         gameOver =false;
+        isPlayerX=true;
     }
 
     public void mainMenu(View v)
@@ -247,6 +260,10 @@ public class MainActivity extends AppCompatActivity {
             TextView o7=findViewById(R.id.o7);
             TextView o8=findViewById(R.id.o8);
 
+            //Winner TextViews
+            TextView XWon = findViewById(R.id.XWon);
+            TextView OWon = findViewById(R.id.OWon);
+            TextView Tie = findViewById(R.id.Tie);
 
 
 
@@ -319,17 +336,21 @@ public class MainActivity extends AppCompatActivity {
                 String winner;
                 if(isOWinner())
                 {
-                    winner = "O is the winner!";
+                    //winner = "O is the winner!";
+                    OWon.setVisibility(View.VISIBLE);
+
                 }
                 else if(isXWinner())
                 {
-                    winner = "X is the winner!";
+                    //winner = "X is the winner!";
+                    XWon.setVisibility(View.VISIBLE);
                 }
                 else
                 {
-                    winner="Tie!";
+                    //winner="Tie!";
+                    Tie.setVisibility(View.VISIBLE);
                 }
-                Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                //Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
                 gameOver=true;
             }
 
@@ -360,6 +381,11 @@ public class MainActivity extends AppCompatActivity {
         TextView o6=findViewById(R.id.o6);
         TextView o7=findViewById(R.id.o7);
         TextView o8=findViewById(R.id.o8);
+
+        //Winner TextViews
+        TextView XWon = findViewById(R.id.XWon);
+        TextView OWon = findViewById(R.id.OWon);
+        TextView Tie = findViewById(R.id.Tie);
 
         //Define buttons
         button0 = findViewById(R.id.button0);
@@ -518,22 +544,26 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                if(isGameOver() || isXWinner() || isOWinner())
+                if(isGameOver() || isXWinner() || isOWinner()) //Check if X or O has won, or if tie
                 {
                     String winner;
                     if(isOWinner())
                     {
-                        winner = "O is the winner!";
+                        //winner = "O is the winner!";
+                        OWon.setVisibility(View.VISIBLE);
+
                     }
                     else if(isXWinner())
                     {
-                        winner = "X is the winner!";
+                        //winner = "X is the winner!";
+                        XWon.setVisibility(View.VISIBLE);
                     }
                     else
                     {
-                        winner="Tie!";
+                        //winner="Tie!";
+                        Tie.setVisibility(View.VISIBLE);
                     }
-                    Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
                     gameOver=true;
                 }
 
@@ -779,22 +809,26 @@ public class MainActivity extends AppCompatActivity {
                     }
                 }
 
-                if(isGameOver() || isXWinner() || isOWinner())
+                if(isGameOver() || isXWinner() || isOWinner()) //Check if X or O has won, or if tie
                 {
                     String winner;
                     if(isOWinner())
                     {
-                        winner = "O is the winner!";
+                        //winner = "O is the winner!";
+                        OWon.setVisibility(View.VISIBLE);
+
                     }
                     else if(isXWinner())
                     {
-                        winner = "X is the winner!";
+                        //winner = "X is the winner!";
+                        XWon.setVisibility(View.VISIBLE);
                     }
                     else
                     {
-                        winner="Tie!";
+                        //winner="Tie!";
+                        Tie.setVisibility(View.VISIBLE);
                     }
-                    Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
+                    //Toast.makeText(getApplicationContext(),winner,Toast.LENGTH_LONG).show();
                     gameOver=true;
                 }
             }
