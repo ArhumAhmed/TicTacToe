@@ -89,7 +89,7 @@ public class AI {
             Move move = movesAvailable.get(i);
             if (turn == 1)
             {
-                makeMove(move,human);
+                makeMove(move,cpu);
                 int currentScore = minimax(depth + 1, 2);
                 max = Math.max(currentScore, max);
                 if(currentScore >= 0)
@@ -113,7 +113,7 @@ public class AI {
                 }
             }
             else if (turn == 2) {
-                makeMove(move, cpu);
+                makeMove(move, human);
                 int currentScore = minimax(depth + 1, 1);
                 min = Math.min(currentScore, min);
                 if(min == -1)
@@ -131,7 +131,7 @@ public class AI {
      Move getBestMove()
      {
          Move bestMove = new Move(1);
-         bestMove.score = minimax(0,2);
+         bestMove.score = minimax(0,1);
          bestMove = aiMove;
 
          return bestMove;
