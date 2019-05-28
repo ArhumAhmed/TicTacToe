@@ -149,11 +149,12 @@ public class MainActivity extends AppCompatActivity {
 
     public void twoPlayer(View v)
     {
+        onePlayerMode = false;
         setContentView(R.layout.activity_main);
     }
 
 
-    public void aiMove(View v)
+    public void aiMove(View v) //Method for AI to take it's turn
     {
 
         if(!gameOver)
@@ -248,7 +249,7 @@ public class MainActivity extends AppCompatActivity {
                 Log.d("Move:","BestMove: "+bestMove);
             }
 
-            if(isGameOver() || isXWinner() || isOWinner())
+            if(isGameOver() || isXWinner() || isOWinner()) //Check if X or O has won, or if tie
             {
                 String winner;
                 if(isOWinner())
@@ -268,8 +269,6 @@ public class MainActivity extends AppCompatActivity {
             }
 
         }
-
-
 
     }
     public void userMove(View v)
@@ -312,15 +311,6 @@ public class MainActivity extends AppCompatActivity {
         if(onePlayerMode) //If the user wants to play against AI
         {
 
-           /* if(!isPlayerX) //If it is the AI's turn
-            {
-                aiMove(v);
-            }
-
-
-            else  //If its the player's turn
-            { */
-
            if(!gameOver)
             {
                     if(findViewById(v.getId()) == button0) //If user clicked top left
@@ -349,7 +339,6 @@ public class MainActivity extends AppCompatActivity {
                             x1.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
                             arr[1] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -365,7 +354,6 @@ public class MainActivity extends AppCompatActivity {
                             x2.setVisibility(View.VISIBLE); //Make X piece visible in the top left spot
                             arr[2] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -381,7 +369,6 @@ public class MainActivity extends AppCompatActivity {
                             x3.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[3] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -397,7 +384,6 @@ public class MainActivity extends AppCompatActivity {
                             x4.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[4] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -413,7 +399,6 @@ public class MainActivity extends AppCompatActivity {
                             x5.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[5] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -429,7 +414,6 @@ public class MainActivity extends AppCompatActivity {
                             x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[6] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -445,7 +429,6 @@ public class MainActivity extends AppCompatActivity {
                             x7.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[7] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
@@ -462,7 +445,6 @@ public class MainActivity extends AppCompatActivity {
                             x8.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[8] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                            //aiMove(v); //launch the method again with turn switched
                         }
 
                         else
