@@ -310,7 +310,7 @@ public class MainActivity extends AppCompatActivity {
             else if(difficulty=="medium")
             {
                 AI ai = new AI(); //Define the AI object
-                if(r.nextInt(2) == 0)
+                if(r.nextInt(8) == 0)
                 {
                     bestMove = ai.getRandomMove(arr);
                 }
