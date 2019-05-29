@@ -1,6 +1,7 @@
 package com.ahmed.tictactoe;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 //AI adapted from https://tutorialedge.net/artificial-intelligence/min-max-algorithm-in-java/
 public class AI {
@@ -60,6 +61,15 @@ public class AI {
     void makeMove(Move move, char player)
     {
         board[move.index] = player;
+    }
+
+    Move getRandomMove(char[] board)
+    {
+        Move random;
+        Random r = new Random();
+        List<Move> movesAvailable = getEmptySpaces();
+        random = movesAvailable.get(r.nextInt(movesAvailable.size()));
+        return random;
     }
 
     int minimax(int depth, int turn) {

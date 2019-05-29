@@ -10,6 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.Random;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -296,6 +298,8 @@ public class MainActivity extends AppCompatActivity {
             TextView Tie = findViewById(R.id.Tie);
 
             Move bestMove = new Move(15);
+            Move randomMove;
+            Random r = new Random();
             if(difficulty=="hard")
             {
                 AI ai = new AI(); //Define the AI object
@@ -306,15 +310,28 @@ public class MainActivity extends AppCompatActivity {
             else if(difficulty=="medium")
             {
                 AI ai = new AI(); //Define the AI object
-               // Move bestMove = new Move(15);
-                bestMove = ai.getBestMove(); //Define the best move
+                if(r.nextInt(2) == 0)
+                {
+                    bestMove = ai.getRandomMove(arr);
+                }
+               else
+                {
+                    bestMove = ai.getBestMove(); //Define the best move
+                }
+
             }
 
             else if (difficulty=="easy")
             {
                 AI ai = new AI(); //Define the AI object
-                //Move bestMove = new Move(15);
-                bestMove = ai.getBestMove(); //Define the best move
+                if(r.nextInt(10) != 0) // 9/10 times will pick random move
+                {
+                    bestMove = ai.getRandomMove(arr);
+                }
+                else
+                {
+                    bestMove = ai.getBestMove(); //Define the best move
+                }
             }
 
             if(bestMove.index == 0)
