@@ -5,15 +5,11 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.animation.Animation;
-import android.view.animation.AnimationUtils;
 import android.view.animation.RotateAnimation;
 import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import org.w3c.dom.Text;
-
-import java.util.Arrays;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -22,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     boolean gameOver=false;
     boolean onePlayerMode = false;
     public static char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
+    String difficulty = "easy";
     //Buttons representing the sector
     Button button0;
     Button button1;
@@ -32,6 +29,9 @@ public class MainActivity extends AppCompatActivity {
     Button button6;
     Button button7;
     Button button8;
+    Button easy;
+    Button medium;
+    Button hard;
 
     TextView X;
     @Override
@@ -53,6 +53,36 @@ public class MainActivity extends AppCompatActivity {
         X = findViewById(R.id.X);
         X.setAnimation(animation);
         X.startAnimation(animation);
+    }
+
+
+    public void diffSelect(View v)
+    {
+        easy = findViewById(R.id.easy);
+        medium = findViewById(R.id.medium);
+        hard = findViewById(R.id.hard);
+
+        if(findViewById(v.getId())==easy)
+        {
+            difficulty = "easy";
+        }
+
+        else if(findViewById(v.getId())==medium)
+        {
+            difficulty="medium";
+        }
+
+        else if(findViewById(v.getId())==hard)
+        {
+            difficulty = "hard";
+        }
+
+        else
+        {
+            Toast.makeText(getApplicationContext(),"This shouldnt have happened",Toast.LENGTH_LONG).show();
+        }
+
+        setContentView(R.layout.activity_main);
     }
 
     boolean isXWinner()
@@ -153,7 +183,7 @@ public class MainActivity extends AppCompatActivity {
     public void onePlayer(View v)
     {
         onePlayerMode = true;
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.submenu_layout);
     }
 
     public void twoPlayer(View v)
@@ -265,11 +295,27 @@ public class MainActivity extends AppCompatActivity {
             TextView OWon = findViewById(R.id.OWon);
             TextView Tie = findViewById(R.id.Tie);
 
-
-
-            AI ai = new AI(); //Define the AI object
             Move bestMove = new Move(15);
-            bestMove = ai.getBestMove(); //Define the best move
+            if(difficulty=="hard")
+            {
+                AI ai = new AI(); //Define the AI object
+                //Move bestMove = new Move(15);
+                bestMove = ai.getBestMove(); //Define the best move
+            }
+
+            else if(difficulty=="medium")
+            {
+                AI ai = new AI(); //Define the AI object
+               // Move bestMove = new Move(15);
+                bestMove = ai.getBestMove(); //Define the best move
+            }
+
+            else if (difficulty=="easy")
+            {
+                AI ai = new AI(); //Define the AI object
+                //Move bestMove = new Move(15);
+                bestMove = ai.getBestMove(); //Define the best move
+            }
 
             if(bestMove.index == 0)
             {
