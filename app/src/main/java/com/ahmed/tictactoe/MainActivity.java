@@ -10,6 +10,10 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.ads.AdRequest;
+import com.google.android.gms.ads.AdView;
+import com.google.android.gms.ads.MobileAds;
+
 import java.util.Random;
 
 
@@ -20,6 +24,9 @@ public class MainActivity extends AppCompatActivity {
     boolean gameOver=false;
     boolean onePlayerMode = false;
     public static char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
+    private AdView inGameAd; //Ad in-game (Main_activity.xml)
+    private AdView menuAd; //Ad on main menu (menu_layout.xml)
+    private AdView subMenuAd; //Ad on submenu (submenu_layout.xml)
     String difficulty = "easy";
     //Buttons representing the sector
     Button button0;
@@ -40,7 +47,16 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
-        animX();
+        animX(); //Initialize X spinning animation
+        //Initialize Ads
+        MobileAds.initialize(this, "ca-app-pub-3011145604783069~2632094784");
+        inGameAd = findViewById(R.id.inGameAdView);
+        menuAd = findViewById(R.id.menuAdView);
+        subMenuAd =findViewById(R.id.submenuAdView);
+        //AdRequest adRequest = new AdRequest.Builder().build();
+        //inGameAd.loadAd(adRequest);
+        //menuAd.loadAd(adRequest);
+        //subMenuAd.loadAd(adRequest);
 
 
     }
@@ -310,7 +326,7 @@ public class MainActivity extends AppCompatActivity {
             else if(difficulty=="medium")
             {
                 AI ai = new AI(); //Define the AI object
-                if(r.nextInt(8) == 0)
+                if(r.nextInt(4) == 1) // 1/4 chance of picking random move
                 {
                     bestMove = ai.getRandomMove(arr);
                 }
@@ -324,7 +340,7 @@ public class MainActivity extends AppCompatActivity {
             else if (difficulty=="easy")
             {
                 AI ai = new AI(); //Define the AI object
-                if(r.nextInt(10) != 0) // 9/10 times will pick random move
+                if(r.nextInt(10) != 1) // 9/10 times will pick random move
                 {
                     bestMove = ai.getRandomMove(arr);
                 }
@@ -399,13 +415,13 @@ public class MainActivity extends AppCompatActivity {
                 String winner;
                 if(isOWinner())
                 {
-                    //winner = "O is the winner!";
+                    //winner = "O wins!";
                     OWon.setVisibility(View.VISIBLE);
 
                 }
                 else if(isXWinner())
                 {
-                    //winner = "X is the winner!";
+                    //winner = "X wins!";
                     XWon.setVisibility(View.VISIBLE);
                 }
                 else
@@ -479,11 +495,6 @@ public class MainActivity extends AppCompatActivity {
                             //aiMove(v); //launch the method again with turn switched
 
                         }
-
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button1) //If user clicked top left
@@ -495,10 +506,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button2) //If user clicked top left
@@ -510,10 +517,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button3) //If user clicked top left
@@ -525,10 +528,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button4) //If user clicked top left
@@ -540,10 +539,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button5) //If user clicked top left
@@ -555,10 +550,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button6) //If user clicked top left
@@ -568,11 +559,6 @@ public class MainActivity extends AppCompatActivity {
                             x6.setVisibility(View.VISIBLE); //Make X piece visible in corresponding spot
                             arr[6] = 'X'; //Store the piece in the array
                             isPlayerX = !isPlayerX; //Change the turn
-                        }
-
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
                         }
                     }
 
@@ -585,10 +571,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                     else if(findViewById(v.getId()) == button8) //If user clicked top left
@@ -601,10 +583,6 @@ public class MainActivity extends AppCompatActivity {
                             isPlayerX = !isPlayerX; //Change the turn
                         }
 
-                        else
-                        {
-                            Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                        }
                     }
 
                 if(isGameOver() || isXWinner() || isOWinner()) //Check if X or O has won, or if tie
@@ -612,13 +590,13 @@ public class MainActivity extends AppCompatActivity {
                     String winner;
                     if(isOWinner())
                     {
-                        //winner = "O is the winner!";
+                        //winner = "O wins!";
                         OWon.setVisibility(View.VISIBLE);
 
                     }
                     else if(isXWinner())
                     {
-                        //winner = "X is the winner!";
+                        //winner = "X wins!";
                         XWon.setVisibility(View.VISIBLE);
                     }
                     else
@@ -665,10 +643,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button1) //If user clicked top left
@@ -690,10 +664,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button2) //If user clicked top left
@@ -716,10 +686,6 @@ public class MainActivity extends AppCompatActivity {
 
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button3) //If user clicked top left
@@ -741,10 +707,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button4) //If user clicked top left
@@ -766,10 +728,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button5) //If user clicked top left
@@ -789,11 +747,6 @@ public class MainActivity extends AppCompatActivity {
                             arr[5] = 'O';
                             isPlayerX = !isPlayerX; //Change the turn
                         }
-                    }
-
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
                     }
                 }
 
@@ -816,10 +769,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button7) //If user clicked top left
@@ -841,10 +790,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 else if(findViewById(v.getId()) == button8) //If user clicked top left
@@ -866,10 +811,6 @@ public class MainActivity extends AppCompatActivity {
                         }
                     }
 
-                    else
-                    {
-                        Toast.makeText(getApplicationContext(), "Invalid Move!", Toast.LENGTH_SHORT).show();
-                    }
                 }
 
                 if(isGameOver() || isXWinner() || isOWinner()) //Check if X or O has won, or if tie
@@ -877,13 +818,13 @@ public class MainActivity extends AppCompatActivity {
                     String winner;
                     if(isOWinner())
                     {
-                        //winner = "O is the winner!";
+                        //winner = "O win!";
                         OWon.setVisibility(View.VISIBLE);
 
                     }
                     else if(isXWinner())
                     {
-                        //winner = "X is the winner!";
+                        //winner = "X wins!";
                         XWon.setVisibility(View.VISIBLE);
                     }
                     else
