@@ -24,9 +24,9 @@ public class MainActivity extends AppCompatActivity {
     boolean gameOver=false;
     boolean onePlayerMode = false;
     public static char arr[] = new char[9]; //Array to store the locations of the boxes (3x3)
-    private AdView inGameAd; //Ad in-game (Main_activity.xml)
-    private AdView menuAd; //Ad on main menu (menu_layout.xml)
-    private AdView subMenuAd; //Ad on submenu (submenu_layout.xml)
+    public AdView inGameAd; //Ad in-game (Main_activity.xml)
+    public AdView menuAd; //Ad on main menu (menu_layout.xml)
+    public AdView subMenuAd; //Ad on submenu (submenu_layout.xml)
     String difficulty = "easy";
     //Buttons representing the sector
     Button button0;
@@ -48,15 +48,17 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.menu_layout);
         animX(); //Initialize X spinning animation
+
         //Initialize Ads
         MobileAds.initialize(this, "ca-app-pub-3011145604783069~2632094784");
         inGameAd = findViewById(R.id.inGameAdView);
         menuAd = findViewById(R.id.menuAdView);
         subMenuAd =findViewById(R.id.submenuAdView);
-        //AdRequest adRequest = new AdRequest.Builder().build();
+        AdRequest adRequest = new AdRequest.Builder().build();
         //inGameAd.loadAd(adRequest);
-        //menuAd.loadAd(adRequest);
+        menuAd.loadAd(adRequest);
         //subMenuAd.loadAd(adRequest);
+
 
 
     }
@@ -100,7 +102,12 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(getApplicationContext(),"This shouldnt have happened",Toast.LENGTH_LONG).show();
         }
 
+        //Switch to main activity layout
         setContentView(R.layout.activity_main);
+        //Initialize ads
+        inGameAd = findViewById(R.id.inGameAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        inGameAd.loadAd(adRequest);
     }
 
     boolean isXWinner()
@@ -202,12 +209,20 @@ public class MainActivity extends AppCompatActivity {
     {
         onePlayerMode = true;
         setContentView(R.layout.submenu_layout);
+        //Initialize ads
+        subMenuAd = findViewById(R.id.submenuAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        subMenuAd.loadAd(adRequest);
     }
 
     public void twoPlayer(View v)
     {
         onePlayerMode = false;
         setContentView(R.layout.activity_main);
+        //Initialize ads
+        inGameAd = findViewById(R.id.inGameAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        inGameAd.loadAd(adRequest);
     }
 
     public void restart(View v)
@@ -278,6 +293,9 @@ public class MainActivity extends AppCompatActivity {
     {
         restart(v);
         setContentView(R.layout.menu_layout);
+        menuAd = findViewById(R.id.menuAdView);
+        AdRequest adRequest = new AdRequest.Builder().build();
+        menuAd.loadAd(adRequest);
         animX();
     }
     public void aiMove(View v) //Method for AI to take it's turn
@@ -340,7 +358,7 @@ public class MainActivity extends AppCompatActivity {
             else if (difficulty=="easy")
             {
                 AI ai = new AI(); //Define the AI object
-                if(r.nextInt(10) != 1) // 9/10 times will pick random move
+                if(r.nextInt(6) != 1) // 5/6 times will pick random move
                 {
                     bestMove = ai.getRandomMove(arr);
                 }
