@@ -110,6 +110,24 @@ public class MainActivity extends AppCompatActivity {
         inGameAd.loadAd(adRequest);
     }
 
+    void turnDisplay()
+    {
+        //Turn TextViews
+        TextView XTurn = findViewById(R.id.XTurn);
+        TextView OTurn = findViewById(R.id.OTurn);
+
+        if(!isPlayerX)
+        {
+            XTurn.setVisibility(View.VISIBLE);
+            OTurn.setVisibility(View.GONE);
+        }
+
+        else
+        {
+            OTurn.setVisibility(View.VISIBLE);
+            XTurn.setVisibility(View.GONE);
+        }
+    }
     boolean isXWinner()
     {
         if(arr[0]==arr[1] && arr[1]==arr[2] && arr[1]=='X') //First row all the same (and not empty)
@@ -219,6 +237,9 @@ public class MainActivity extends AppCompatActivity {
     {
         onePlayerMode = false;
         setContentView(R.layout.activity_main);
+        isPlayerX = false;
+        turnDisplay(); //Display X Turn
+        isPlayerX =true;
         //Initialize ads
         inGameAd = findViewById(R.id.inGameAdView);
         AdRequest adRequest = new AdRequest.Builder().build();
@@ -287,6 +308,12 @@ public class MainActivity extends AppCompatActivity {
         //Restart board status
         gameOver =false;
         isPlayerX=true;
+        if(!onePlayerMode)
+        {
+            isPlayerX =false;
+            turnDisplay();
+            isPlayerX =true;
+        }
     }
 
     public void mainMenu(View v)
@@ -484,6 +511,10 @@ public class MainActivity extends AppCompatActivity {
         TextView OWon = findViewById(R.id.OWon);
         TextView Tie = findViewById(R.id.Tie);
 
+        //Turn TextViews
+        TextView XTurn = findViewById(R.id.XTurn);
+        TextView OTurn = findViewById(R.id.OTurn);
+
         //Define buttons
         button0 = findViewById(R.id.button0);
         button1 = findViewById(R.id.button1);
@@ -639,6 +670,8 @@ public class MainActivity extends AppCompatActivity {
         {
             if(!gameOver)
             {
+                turnDisplay();
+
                 if(findViewById(v.getId()) == button0) //If user clicked top left
                 {
                     if(arr[0]!='X' && arr[0]!= 'O') //Check to see if space occupied. 1 check if null?
@@ -834,6 +867,9 @@ public class MainActivity extends AppCompatActivity {
                 if(isGameOver() || isXWinner() || isOWinner()) //Check if X or O has won, or if tie
                 {
                     String winner;
+                    XTurn.setVisibility(View.GONE);
+                    OTurn.setVisibility(View.GONE);
+
                     if(isOWinner())
                     {
                         //winner = "O win!";
